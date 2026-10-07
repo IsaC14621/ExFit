@@ -1,0 +1,13 @@
+C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\bin\Debug\net10.0\lib_aplicaciones.deps.json
+C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\bin\Debug\net10.0\lib_aplicaciones.dll
+C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\bin\Debug\net10.0\lib_aplicaciones.pdb
+C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.csproj.AssemblyReference.cache
+C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.AssemblyInfoInputs.cache
+C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.AssemblyInfo.cs
+C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.csproj.CoreCompileInputs.cache
+C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.dll
+C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\obj\Debug\net10.0\refint\lib_aplicaciones.dll
+C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.pdb
+C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\obj\Debug\net10.0\ref\lib_aplicaciones.dll
+C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\obj\Debug\net10.0\lib_apli.7723F211.Up2Date
