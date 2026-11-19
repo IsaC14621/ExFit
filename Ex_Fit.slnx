@@ -1,5 +1,8 @@
 <Solution>
+  <Project Path="front_gym/front_gym.csproj" Id="cbd656f8-3139-4f5f-9861-e93ada85225d" />
   <Project Path="lib_aplicaciones/lib_aplicaciones.csproj" />
+  <Project Path="presentaciones_gym/presentaciones_gym.csproj" Id="f0265a26-ab60-427c-ae77-b8daeeacfd77" />
   <Project Path="presentacion_consola/presentacion_consola.csproj" />
   <Project Path="presentacion_pruebas/presentacion_pruebas.csproj" />
+  <Project Path="servicios/servicios.csproj" Id="28aaf2cf-1813-4ba9-a1f7-c484db4012ad" />
 </Solution>
