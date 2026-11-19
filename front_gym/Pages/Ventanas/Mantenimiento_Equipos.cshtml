@@ -1,0 +1,147 @@
+﻿@page
+@model Mantenimiento_EquiposModel
+@{
+    ViewData["Title"] = "Mantenimiento Equipos";
+}
+
+<form method="post">
+
+    <div class="text-center">
+        <h1 class="display-4">Mantenimiento Equipos</h1>
+
+        <div>
+            <input type="submit"
+                   value="Consultar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtConsultar" />
+
+            <input type="submit"
+                   value="Nuevo"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtNuevo" />
+
+            <input type="submit"
+                   value="Guardar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtGuardar" />
+
+            <input id="flNombreEquipo"
+                   placeholder="Nombre del equipo"
+                   asp-for="Filtro!.Nombre_equipo" />
+        </div>
+
+        @if (ViewData.ContainsKey("Mensaje"))
+        {
+            @await Html.PartialAsync("../Emergentes/Mensajes.cshtml")
+        }
+
+        @if (Model.Formulario || Model.Borrar)
+        {
+            <input type="hidden"
+                   asp-for="Actual!.Id" />
+        }
+
+        @if (Model.Formulario)
+        {
+            <div>
+                <h3>Mantenimiento Equipos</h3>
+
+                <label>Nombre del equipo</label>
+                <input id="nmNombreEquipo"
+                       maxlength="100"
+                       asp-for="Actual!.Nombre_equipo" />
+                <br />
+
+                <label>Fecha de mantenimiento</label>
+                <input id="nmFecha"
+                       type="date"
+                       asp-for="Actual!.Fecha_Mantenimiento" />
+                <br />
+
+                <label>Costo del servicio</label>
+                <input id="nmCosto"
+                       type="number"
+                       step="0.01"
+                       asp-for="Actual!.Costo_Servicio" />
+                <br />
+
+                <label>Estado actual</label>
+                <input id="nmEstado"
+                       maxlength="50"
+                       asp-for="Actual!.Estado_Actual" />
+                <br />
+            </div>
+        }
+
+        @if (Model.Borrar)
+        {
+            <div class="popup">
+                <div class="pp_del_inner">
+                    <h3>Mensaje</h3>
+
+                    <h4>
+                        ¿Quiere borrar el mantenimiento con la información
+                        @Model.Actual!.Nombre_equipo,
+                        @Model.Actual!.Fecha_Mantenimiento.ToString("dd/MM/yyyy")?
+                    </h4>
+
+                    <input type="submit"
+                           value="Cancelar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtConsultar" />
+
+                    <input type="submit"
+                           value="Borrar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtBorrar" />
+                </div>
+            </div>
+        }
+
+        @if (!Model.Formulario)
+        {
+            <br />
+            <br />
+
+            <div class="containers_vn panel panel-default">
+                <table class="tb_data table table-striped table-bordered table-hover">
+
+                    <tr>
+                        <th>Nombre del equipo</th>
+                        <th>Fecha de mantenimiento</th>
+                        <th>Costo del servicio</th>
+                        <th>Estado actual</th>
+                        <th>Acción</th>
+                    </tr>
+
+                    @if (Model.Lista != null)
+                    {
+                        foreach (var elemento in Model.Lista)
+                        {
+                            <tr>
+                                <td>@elemento.Nombre_equipo</td>
+                                <td>@elemento.Fecha_Mantenimiento.ToString("dd/MM/yyyy")</td>
+                                <td>@elemento.Costo_Servicio.ToString("N2")</td>
+                                <td>@elemento.Estado_Actual</td>
+
+                                <td>
+                                    <input type="submit"
+                                           value="Editar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtEditar"
+                                           asp-route-data="@elemento.Id" />
+
+                                    <input type="submit"
+                                           value="Borrar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtPregBorrar"
+                                           asp-route-data="@elemento.Id" />
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        }
+    </div>
+</form>

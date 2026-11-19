@@ -1,0 +1,158 @@
+﻿@page
+@model Reservas_ClasesModel
+@{
+    ViewData["Title"] = "Reservas Clases";
+}
+
+<form method="post">
+
+    <div class="text-center">
+        <h1 class="display-4">Reservas Clases</h1>
+
+        <div>
+            <input type="submit"
+                   value="Consultar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtConsultar" />
+
+            <input type="submit"
+                   value="Nuevo"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtNuevo" />
+
+            <input type="submit"
+                   value="Guardar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtGuardar" />
+
+            <input id="flIdCliente"
+                   type="number"
+                   placeholder="Id Cliente"
+                   asp-for="Filtro!.id_Cliente" />
+        </div>
+
+        @if (ViewData.ContainsKey("Mensaje"))
+        {
+            @await Html.PartialAsync("../Emergentes/Mensajes.cshtml")
+        }
+
+        @if (Model.Formulario || Model.Borrar)
+        {
+            <input type="hidden"
+                   asp-for="Actual!.Id" />
+        }
+
+        @if (Model.Formulario)
+        {
+            <div>
+                <h3>Reservas Clases</h3>
+
+                <label>Id Clase</label>
+                <input id="nmIdClase"
+                       type="number"
+                       asp-for="Actual!.id_Clase" />
+                <br />
+
+                <label>Id Cliente</label>
+                <input id="nmIdCliente"
+                       type="number"
+                       asp-for="Actual!.id_Cliente" />
+                <br />
+
+                <label>Tipo de membresía</label>
+                <input id="nmTipoMembresia"
+                       maxlength="50"
+                       asp-for="Actual!.Tipo_Membresia" />
+                <br />
+
+                <label>Fecha de reserva</label>
+                <input id="nmFecha"
+                       type="date"
+                       asp-for="Actual!.Fecha_Reserva" />
+                <br />
+
+                <label>Asistencia</label>
+                <input id="nmAsistencia"
+                       type="checkbox"
+                       asp-for="Actual!.Asistencia" />
+                <br />
+            </div>
+        }
+
+        @if (Model.Borrar)
+        {
+            <div class="popup">
+                <div class="pp_del_inner">
+                    <h3>Mensaje</h3>
+
+                    <h4>
+                        ¿Quiere borrar la reserva con la información
+                        Clase @Model.Actual!.id_Clase,
+                        Cliente @Model.Actual!.id_Cliente,
+                        @Model.Actual!.Fecha_Reserva.ToString("dd/MM/yyyy")?
+                    </h4>
+
+                    <input type="submit"
+                           value="Cancelar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtConsultar" />
+
+                    <input type="submit"
+                           value="Borrar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtBorrar" />
+                </div>
+            </div>
+        }
+
+        @if (!Model.Formulario)
+        {
+            <br />
+            <br />
+
+            <div class="containers_vn panel panel-default">
+                <table class="tb_data table table-striped table-bordered table-hover">
+
+                    <tr>
+                        <th>Id</th>
+                        <th>Id Clase</th>
+                        <th>Id Cliente</th>
+                        <th>Tipo de membresía</th>
+                        <th>Fecha de reserva</th>
+                        <th>Asistencia</th>
+                        <th>Acción</th>
+                    </tr>
+
+                    @if (Model.Lista != null)
+                    {
+                        foreach (var elemento in Model.Lista)
+                        {
+                            <tr>
+                                <td>@elemento.Id</td>
+                                <td>@elemento.id_Clase</td>
+                                <td>@elemento.id_Cliente</td>
+                                <td>@elemento.Tipo_Membresia</td>
+                                <td>@elemento.Fecha_Reserva.ToString("dd/MM/yyyy")</td>
+                                <td>@(elemento.Asistencia ? "Sí" : "No")</td>
+
+                                <td>
+                                    <input type="submit"
+                                           value="Editar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtEditar"
+                                           asp-route-data="@elemento.Id" />
+
+                                    <input type="submit"
+                                           value="Borrar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtPregBorrar"
+                                           asp-route-data="@elemento.Id" />
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        }
+    </div>
+</form>

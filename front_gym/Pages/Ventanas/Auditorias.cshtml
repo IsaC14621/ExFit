@@ -1,0 +1,135 @@
+﻿@page
+@model AuditoriasModel
+@{
+    ViewData["Title"] = "Auditorias";
+}
+
+<form method="post">
+
+    <div class="text-center">
+        <h1 class="display-4">Auditorias</h1>
+
+        <div>
+            <input type="submit"
+                   value="Consultar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtConsultar" />
+
+            <input type="submit"
+                   value="Nuevo"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtNuevo" />
+
+            <input type="submit"
+                   value="Guardar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtGuardar" />
+
+            <input id="flAccion"
+                   placeholder="Acción"
+                   asp-for="Filtro!.Accion" />
+        </div>
+
+        @if (ViewData.ContainsKey("Mensaje"))
+        {
+            @await Html.PartialAsync("../Emergentes/Mensajes.cshtml")
+        }
+
+        @if (Model.Formulario || Model.Borrar)
+        {
+            <input type="hidden"
+                   asp-for="Actual!.Id" />
+        }
+
+        @if (Model.Formulario)
+        {
+            <div>
+                <h3>Auditorias</h3>
+
+                <label>Id usuario</label>
+                <input id="nmUsuario"
+                       type="number"
+                       asp-for="Actual!.Usuario" />
+                <br />
+
+                <label>Acción</label>
+                <input id="nmAccion"
+                       asp-for="Actual!.Accion" />
+                <br />
+
+                <label>Fecha</label>
+                <input id="nmFecha"
+                       type="datetime-local"
+                       asp-for="Actual!.Fecha" />
+                <br />
+            </div>
+        }
+
+        @if (Model.Borrar)
+        {
+            <div class="popup">
+                <div class="pp_del_inner">
+                    <h3>Mensaje</h3>
+
+                    <h4>
+                        ¿Quiere borrar el registro de auditoría @Model.Actual!.Id?
+                    </h4>
+
+                    <input type="submit"
+                           value="Cancelar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtConsultar" />
+
+                    <input type="submit"
+                           value="Borrar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtBorrar" />
+                </div>
+            </div>
+        }
+
+        @if (!Model.Formulario)
+        {
+            <br />
+            <br />
+
+            <div class="containers_vn panel panel-default">
+                <table class="tb_data table table-striped table-bordered table-hover">
+
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Acción realizada</th>
+                        <th>Fecha</th>
+                        <th>Acción</th>
+                    </tr>
+
+                    @if (Model.Lista != null)
+                    {
+                        foreach (var elemento in Model.Lista)
+                        {
+                            <tr>
+                                <td>@elemento.Usuario</td>
+                                <td>@elemento.Accion</td>
+                                <td>@elemento.Fecha.ToString("dd/MM/yyyy HH:mm")</td>
+
+                                <td>
+                                    <input type="submit"
+                                           value="Editar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtEditar"
+                                           asp-route-data="@elemento.Id" />
+
+                                    <input type="submit"
+                                           value="Borrar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtPregBorrar"
+                                           asp-route-data="@elemento.Id" />
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        }
+    </div>
+</form>

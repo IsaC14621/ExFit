@@ -1,0 +1,154 @@
+﻿@page
+@model ProductosModel
+@{
+    ViewData["Title"] = "Productos";
+}
+
+<form method="post">
+
+    <div class="text-center">
+        <h1 class="display-4">Productos</h1>
+
+        <div>
+            <input type="submit"
+                   value="Consultar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtConsultar" />
+
+            <input type="submit"
+                   value="Nuevo"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtNuevo" />
+
+            <input type="submit"
+                   value="Guardar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtGuardar" />
+
+            <input id="flNombre_Producto"
+                   placeholder="Nombre del producto"
+                   asp-for="Filtro!.Nombre_Producto" />
+        </div>
+
+        @if (ViewData.ContainsKey("Mensaje"))
+        {
+            @await Html.PartialAsync("../Emergentes/Mensajes.cshtml")
+        }
+
+        @if (Model.Formulario || Model.Borrar)
+        {
+            <input type="hidden"
+                   asp-for="Actual!.Id" />
+        }
+
+        @if (Model.Formulario)
+        {
+            <div>
+                <h3>Productos</h3>
+
+                <label>Id cliente</label>
+                <input id="nmId_Cliente"
+                       type="number"
+                       asp-for="Actual!.Id_Cliente" />
+                <br />
+
+                <label>Id vendedor</label>
+                <input id="nmId_Vendedor"
+                       type="number"
+                       asp-for="Actual!.Id_Vendedor" />
+                <br />
+
+                <label>Nombre del producto</label>
+                <input id="nmNombre_Producto"
+                       asp-for="Actual!.Nombre_Producto" />
+                <br />
+
+                <label>Fecha de venta</label>
+                <input id="nmFecha_Venta"
+                       type="date"
+                       asp-for="Actual!.Fecha_Venta"
+                       asp-format="{0:yyyy-MM-dd}" />
+                <br />
+
+                <label>Total</label>
+                <input id="nmTotal"
+                       type="number"
+                       step="0.01"
+                       asp-for="Actual!.Total" />
+                <br />
+            </div>
+        }
+
+        @if (Model.Borrar)
+        {
+            <div class="popup">
+                <div class="pp_del_inner">
+                    <h3>Mensaje</h3>
+
+                    <h4>
+                        ¿Quiere borrar el producto
+                        @Model.Actual!.Nombre_Producto?
+                    </h4>
+
+                    <input type="submit"
+                           value="Cancelar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtConsultar" />
+
+                    <input type="submit"
+                           value="Borrar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtBorrar" />
+                </div>
+            </div>
+        }
+
+        @if (!Model.Formulario)
+        {
+            <br />
+            <br />
+
+            <div class="containers_vn panel panel-default">
+                <table class="tb_data table table-striped table-bordered table-hover">
+
+                    <tr>
+                        <th>Id cliente</th>
+                        <th>Id vendedor</th>
+                        <th>Nombre del producto</th>
+                        <th>Fecha de venta</th>
+                        <th>Total</th>
+                        <th>Acción</th>
+                    </tr>
+
+                    @if (Model.Lista != null)
+                    {
+                        foreach (var elemento in Model.Lista)
+                        {
+                            <tr>
+                                <td>@elemento.Id_Cliente</td>
+                                <td>@elemento.Id_Vendedor</td>
+                                <td>@elemento.Nombre_Producto</td>
+                                <td>@elemento.Fecha_Venta.ToString("dd/MM/yyyy")</td>
+                                <td>@elemento.Total.ToString("N2")</td>
+
+                                <td>
+                                    <input type="submit"
+                                           value="Editar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtEditar"
+                                           asp-route-data="@elemento.Id" />
+
+                                    <input type="submit"
+                                           value="Borrar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtPregBorrar"
+                                           asp-route-data="@elemento.Id" />
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        }
+    </div>
+</form>

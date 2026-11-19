@@ -109,6 +109,7 @@
                 <table class="tb_data table table-striped table-bordered table-hover">
 
                     <tr>
+                        <th>Id</th>
                         <th>Nombre</th>
                         <th>Cédula</th>
                         <th>Membresía</th>
@@ -122,6 +123,7 @@
                         foreach (var elemento in Model.Lista)
                         {
                             <tr>
+                                <td>@elemento.Id</td>
                                 <td>@elemento.Nombre</td>
                                 <td>@elemento.C_c</td>
                                 <td>@elemento.Membresia</td>

@@ -12,7 +12,7 @@ namespace Pruebas_Unitarias
     public sealed class Asistencia_TrabajadoresPruebas
     {
         private IConexion conexion;
-        private Asistencia_Trabajadores? entidad = null;
+        private AsistenciaTrabajadores? entidad = null;
 
         public Asistencia_TrabajadoresPruebas()
         {
@@ -33,7 +33,7 @@ namespace Pruebas_Unitarias
 
         public void Insertar()
         {
-            this.entidad = new Asistencia_Trabajadores()
+            this.entidad = new AsistenciaTrabajadores()
             {
                 id_Trabajador = 1,
                 Fecha = DateTime.Now,
@@ -43,13 +43,13 @@ namespace Pruebas_Unitarias
             };
 
 
-            this.conexion.Asistencia_Trabajadores!.Add(this.entidad);
+            this.conexion.AsistenciaTrabajadores!.Add(this.entidad);
             this.conexion.SaveChanges();
         }
 
         public void Consultar()
         {
-            var lista = this.conexion.Asistencia_Trabajadores!.ToList();
+            var lista = this.conexion.AsistenciaTrabajadores!.ToList();
 
             if (lista.Count <= 0)
                 throw new Exception("Lista vacía");
@@ -59,7 +59,7 @@ namespace Pruebas_Unitarias
         {
             this.entidad!.Hora_Entrada = DateTime.Now;
 
-            var entry = this.conexion.Entry<Asistencia_Trabajadores>(this.entidad);
+            var entry = this.conexion.Entry<AsistenciaTrabajadores>(this.entidad);
 
             entry.State = EntityState.Modified;
 
@@ -68,7 +68,7 @@ namespace Pruebas_Unitarias
 
         private void Borrar()
         {
-            this.conexion.Asistencia_Trabajadores!.Remove(this.entidad!);
+            this.conexion.AsistenciaTrabajadores!.Remove(this.entidad!);
             this.conexion.SaveChanges();
         }
     }

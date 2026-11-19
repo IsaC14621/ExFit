@@ -1,27 +1,14 @@
-C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\bin\Debug\net10.0\lib_aplicaciones.deps.json
-C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\bin\Debug\net10.0\lib_aplicaciones.dll
-C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\bin\Debug\net10.0\lib_aplicaciones.pdb
-C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.csproj.AssemblyReference.cache
-C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.AssemblyInfoInputs.cache
-C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.AssemblyInfo.cs
-C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.csproj.CoreCompileInputs.cache
-C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.dll
-C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\obj\Debug\net10.0\refint\lib_aplicaciones.dll
-C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.pdb
-C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\obj\Debug\net10.0\ref\lib_aplicaciones.dll
-C:\Users\ISABELLA\source\repos\Ex_Fit\lib_aplicaciones\obj\Debug\net10.0\lib_apli.7723F211.Up2Date
-C:\Users\ISABELLA\OneDrive\Escritorio\ExFit\lib_aplicaciones\bin\Debug\net10.0\lib_aplicaciones.deps.json
-C:\Users\ISABELLA\OneDrive\Escritorio\ExFit\lib_aplicaciones\bin\Debug\net10.0\lib_aplicaciones.dll
-C:\Users\ISABELLA\OneDrive\Escritorio\ExFit\lib_aplicaciones\bin\Debug\net10.0\lib_aplicaciones.pdb
-C:\Users\ISABELLA\OneDrive\Escritorio\ExFit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.csproj.AssemblyReference.cache
-C:\Users\ISABELLA\OneDrive\Escritorio\ExFit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\ISABELLA\OneDrive\Escritorio\ExFit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.AssemblyInfoInputs.cache
-C:\Users\ISABELLA\OneDrive\Escritorio\ExFit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.AssemblyInfo.cs
-C:\Users\ISABELLA\OneDrive\Escritorio\ExFit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.csproj.CoreCompileInputs.cache
-C:\Users\ISABELLA\OneDrive\Escritorio\ExFit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.sourcelink.json
-C:\Users\ISABELLA\OneDrive\Escritorio\ExFit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.dll
-C:\Users\ISABELLA\OneDrive\Escritorio\ExFit\lib_aplicaciones\obj\Debug\net10.0\refint\lib_aplicaciones.dll
-C:\Users\ISABELLA\OneDrive\Escritorio\ExFit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.pdb
-C:\Users\ISABELLA\OneDrive\Escritorio\ExFit\lib_aplicaciones\obj\Debug\net10.0\ref\lib_aplicaciones.dll
-C:\Users\ISABELLA\OneDrive\Escritorio\ExFit\lib_aplicaciones\obj\Debug\net10.0\lib_apli.7723F211.Up2Date
+C:\Users\carol\Downloads\proyecgym2\proyecgym\proyecgym\ExFit (3)\ExFit\lib_aplicaciones\bin\Debug\net10.0\lib_aplicaciones.deps.json
+C:\Users\carol\Downloads\proyecgym2\proyecgym\proyecgym\ExFit (3)\ExFit\lib_aplicaciones\bin\Debug\net10.0\lib_aplicaciones.dll
+C:\Users\carol\Downloads\proyecgym2\proyecgym\proyecgym\ExFit (3)\ExFit\lib_aplicaciones\bin\Debug\net10.0\lib_aplicaciones.pdb
+C:\Users\carol\Downloads\proyecgym2\proyecgym\proyecgym\ExFit (3)\ExFit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.csproj.AssemblyReference.cache
+C:\Users\carol\Downloads\proyecgym2\proyecgym\proyecgym\ExFit (3)\ExFit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\carol\Downloads\proyecgym2\proyecgym\proyecgym\ExFit (3)\ExFit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.AssemblyInfoInputs.cache
+C:\Users\carol\Downloads\proyecgym2\proyecgym\proyecgym\ExFit (3)\ExFit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.AssemblyInfo.cs
+C:\Users\carol\Downloads\proyecgym2\proyecgym\proyecgym\ExFit (3)\ExFit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.csproj.CoreCompileInputs.cache
+C:\Users\carol\Downloads\proyecgym2\proyecgym\proyecgym\ExFit (3)\ExFit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.sourcelink.json
+C:\Users\carol\Downloads\proyecgym2\proyecgym\proyecgym\ExFit (3)\ExFit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.dll
+C:\Users\carol\Downloads\proyecgym2\proyecgym\proyecgym\ExFit (3)\ExFit\lib_aplicaciones\obj\Debug\net10.0\refint\lib_aplicaciones.dll
+C:\Users\carol\Downloads\proyecgym2\proyecgym\proyecgym\ExFit (3)\ExFit\lib_aplicaciones\obj\Debug\net10.0\lib_aplicaciones.pdb
+C:\Users\carol\Downloads\proyecgym2\proyecgym\proyecgym\ExFit (3)\ExFit\lib_aplicaciones\obj\Debug\net10.0\ref\lib_aplicaciones.dll
+C:\Users\carol\Downloads\proyecgym2\proyecgym\proyecgym\ExFit (3)\ExFit\lib_aplicaciones\obj\Debug\net10.0\lib_apli.7723F211.Up2Date

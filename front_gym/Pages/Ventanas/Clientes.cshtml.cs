@@ -1,5 +1,4 @@
 using lib_aplicaciones.entidades;
-using lib_aplicaciones.interfaces;
 using lib_aplicaciones.nucleo;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -22,7 +21,7 @@ namespace front_gym.Pages.Ventanas
         [BindProperty] public Clientes? Actual { get; set; }
         [BindProperty] public bool Formulario { get; set; } = false;
         [BindProperty] public bool Borrar { get; set; } = false;
-        
+
         public void OnGet() { OnPostBtConsultar(); }
 
         public void OnPostBtConsultar()

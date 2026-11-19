@@ -10,7 +10,7 @@ namespace lib_aplicaciones.entidades
         public int Id { get; set; }
         public int Id_Cliente { get; set; }
         public int Id_Vendedor { get; set; }
-        public string  Nombre_Producto { get; set; }
+        public string?  Nombre_Producto { get; set; }
         public DateTime Fecha_Venta { get; set; }
         public decimal Total { get; set; }
 

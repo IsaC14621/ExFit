@@ -1,0 +1,148 @@
+﻿@page
+@model Tipo_ClasesModel
+@{
+    ViewData["Title"] = "Tipo Clases";
+}
+
+<form method="post">
+
+    <div class="text-center">
+        <h1 class="display-4">Tipo Clases</h1>
+
+        <div>
+            <input type="submit"
+                   value="Consultar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtConsultar" />
+
+            <input type="submit"
+                   value="Nuevo"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtNuevo" />
+
+            <input type="submit"
+                   value="Guardar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtGuardar" />
+
+            <input id="flId"
+                   type="number"
+                   placeholder="Id"
+                   asp-for="Filtro!.Id" />
+        </div>
+
+        @if (ViewData.ContainsKey("Mensaje"))
+        {
+            @await Html.PartialAsync("../Emergentes/Mensajes.cshtml")
+        }
+
+        @if (Model.Formulario || Model.Borrar)
+        {
+            <input type="hidden"
+                   asp-for="Actual!.Id" />
+        }
+
+        @if (Model.Formulario)
+        {
+            <div>
+                <h3>Tipo Clases</h3>
+
+                <label>Baile con el pétalo</label>
+                <input id="nmBaile"
+                       type="checkbox"
+                       asp-for="Actual!.Baile_con_el_petalo" />
+                <br />
+
+                <label>Samba con el mozo</label>
+                <input id="nmSamba"
+                       type="checkbox"
+                       asp-for="Actual!.samba_con_el_mozo" />
+                <br />
+
+                <label>Ex-plotamos</label>
+                <input id="nmExplotamos"
+                       type="checkbox"
+                       asp-for="Actual!.Ex_plotamos" />
+                <br />
+
+                <label>Huyendo</label>
+                <input id="nmHuyendo"
+                       type="checkbox"
+                       asp-for="Actual!.Huyendo" />
+                <br />
+            </div>
+        }
+
+        @if (Model.Borrar)
+        {
+            <div class="popup">
+                <div class="pp_del_inner">
+                    <h3>Mensaje</h3>
+
+                    <h4>
+                        ¿Quiere borrar el tipo de clase con Id
+                        @Model.Actual!.Id?
+                    </h4>
+
+                    <input type="submit"
+                           value="Cancelar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtConsultar" />
+
+                    <input type="submit"
+                           value="Borrar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtBorrar" />
+                </div>
+            </div>
+        }
+
+        @if (!Model.Formulario)
+        {
+            <br />
+            <br />
+
+            <div class="containers_vn panel panel-default">
+                <table class="tb_data table table-striped table-bordered table-hover">
+
+                    <tr>
+                        <th>Id</th>
+                        <th>Baile con el pétalo</th>
+                        <th>Samba con el mozo</th>
+                        <th>Ex-plotamos</th>
+                        <th>Huyendo</th>
+                        <th>Acción</th>
+                    </tr>
+
+                    @if (Model.Lista != null)
+                    {
+                        foreach (var elemento in Model.Lista)
+                        {
+                            <tr>
+                                <td>@elemento.Id</td>
+                                <td>@(elemento.Baile_con_el_petalo ? "Sí" : "No")</td>
+                                <td>@(elemento.samba_con_el_mozo ? "Sí" : "No")</td>
+                                <td>@(elemento.Ex_plotamos ? "Sí" : "No")</td>
+                                <td>@(elemento.Huyendo ? "Sí" : "No")</td>
+
+                                <td>
+                                    <input type="submit"
+                                           value="Editar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtEditar"
+                                           asp-route-data="@elemento.Id" />
+
+                                    <input type="submit"
+                                           value="Borrar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtPregBorrar"
+                                           asp-route-data="@elemento.Id" />
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        }
+    </div>
+</form>

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace lib_aplicaciones.entidades
 {
-    public class Ejercicio
+    public class Ejercicios
     {
         public int Id { get; set; }
         public string? Nombre_Ejercicio{ get; set; }

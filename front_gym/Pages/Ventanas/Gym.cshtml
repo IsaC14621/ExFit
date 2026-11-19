@@ -1,0 +1,143 @@
+﻿@page
+@model GymModel
+@{
+    ViewData["Title"] = "Gym";
+}
+
+<form method="post">
+
+    <div class="text-center">
+        <h1 class="display-4">Gym</h1>
+
+        <div>
+            <input type="submit"
+                   value="Consultar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtConsultar" />
+
+            <input type="submit"
+                   value="Nuevo"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtNuevo" />
+
+            <input type="submit"
+                   value="Guardar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtGuardar" />
+
+            <input id="fldireccion"
+                   placeholder="Dirección"
+                   asp-for="Filtro!.direccion" />
+        </div>
+
+        @if (ViewData.ContainsKey("Mensaje"))
+        {
+            @await Html.PartialAsync("../Emergentes/Mensajes.cshtml")
+        }
+
+        @if (Model.Formulario || Model.Borrar)
+        {
+            <input type="hidden"
+                   asp-for="Actual!.Id" />
+        }
+
+        @if (Model.Formulario)
+        {
+            <div>
+                <h3>Gym</h3>
+
+                <label>Dirección</label>
+                <input id="nmdireccion"
+                       asp-for="Actual!.direccion" />
+                <br />
+
+                <label>Horario</label>
+                <input id="nmhorario"
+                       asp-for="Actual!.horario" />
+                <br />
+
+                <label>Teléfono</label>
+                <input id="nmtelefono"
+                       asp-for="Actual!.telefono" />
+                <br />
+
+                <label>Fecha</label>
+                <input id="nmfecha"
+                       type="date"
+                       asp-for="Actual!.fecha"
+                       asp-format="{0:yyyy-MM-dd}" />
+                <br />
+            </div>
+        }
+
+        @if (Model.Borrar)
+        {
+            <div class="popup">
+                <div class="pp_del_inner">
+                    <h3>Mensaje</h3>
+
+                    <h4>
+                        ¿Quiere borrar el gym de la dirección
+                        @Model.Actual!.direccion?
+                    </h4>
+
+                    <input type="submit"
+                           value="Cancelar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtConsultar" />
+
+                    <input type="submit"
+                           value="Borrar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtBorrar" />
+                </div>
+            </div>
+        }
+
+        @if (!Model.Formulario)
+        {
+            <br />
+            <br />
+
+            <div class="containers_vn panel panel-default">
+                <table class="tb_data table table-striped table-bordered table-hover">
+
+                    <tr>
+                        <th>Dirección</th>
+                        <th>Horario</th>
+                        <th>Teléfono</th>
+                        <th>Fecha</th>
+                        <th>Acción</th>
+                    </tr>
+
+                    @if (Model.Lista != null)
+                    {
+                        foreach (var elemento in Model.Lista)
+                        {
+                            <tr>
+                                <td>@elemento.direccion</td>
+                                <td>@elemento.horario</td>
+                                <td>@elemento.telefono</td>
+                                <td>@($"{elemento.fecha:dd/MM/yyyy}")</td>
+
+                                <td>
+                                    <input type="submit"
+                                           value="Editar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtEditar"
+                                           asp-route-data="@elemento.Id" />
+
+                                    <input type="submit"
+                                           value="Borrar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtPregBorrar"
+                                           asp-route-data="@elemento.Id" />
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        }
+    </div>
+</form>

@@ -1,0 +1,148 @@
+﻿@page
+@model AsistenciaTrabajadoresModel
+@{
+    ViewData["Title"] = "Asistencia Trabajadores";
+}
+
+<form method="post">
+
+    <div class="text-center">
+        <h1 class="display-4">Asistencia Trabajadores</h1>
+
+        <div>
+            <input type="submit"
+                   value="Consultar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtConsultar" />
+
+            <input type="submit"
+                   value="Nuevo"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtNuevo" />
+
+            <input type="submit"
+                   value="Guardar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtGuardar" />
+
+            <input id="flIdTrabajador"
+                   type="number"
+                   placeholder="Id Trabajador"
+                   asp-for="Filtro!.id_Trabajador" />
+        </div>
+
+        @if (ViewData.ContainsKey("Mensaje"))
+        {
+            @await Html.PartialAsync("../Emergentes/Mensajes.cshtml")
+        }
+
+        @if (Model.Formulario || Model.Borrar)
+        {
+            <input type="hidden"
+                   asp-for="Actual!.Id" />
+        }
+
+        @if (Model.Formulario)
+        {
+            <div>
+                <h3>Asistencia Trabajadores</h3>
+
+                <label>Id Trabajador</label>
+                <input id="nmIdTrabajador"
+                       type="number"
+                       asp-for="Actual!.id_Trabajador" />
+                <br />
+
+                <label>Fecha</label>
+                <input id="nmFecha"
+                       type="date"
+                       asp-for="Actual!.Fecha" />
+                <br />
+
+                <label>Hora de entrada</label>
+                <input id="nmHoraEntrada"
+                       type="time"
+                       asp-for="Actual!.Hora_Entrada" />
+                <br />
+
+                <label>Hora de salida</label>
+                <input id="nmHoraSalida"
+                       type="time"
+                       asp-for="Actual!.Hora_Salida" />
+                <br />
+            </div>
+        }
+
+        @if (Model.Borrar)
+        {
+            <div class="popup">
+                <div class="pp_del_inner">
+                    <h3>Mensaje</h3>
+
+                    <h4>
+                        ¿Quiere borrar la asistencia con la información
+                        Trabajador @Model.Actual!.id_Trabajador,
+                        @Model.Actual!.Fecha.ToString("dd/MM/yyyy")?
+                    </h4>
+
+                    <input type="submit"
+                           value="Cancelar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtConsultar" />
+
+                    <input type="submit"
+                           value="Borrar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtBorrar" />
+                </div>
+            </div>
+        }
+
+        @if (!Model.Formulario)
+        {
+            <br />
+            <br />
+
+            <div class="containers_vn panel panel-default">
+                <table class="tb_data table table-striped table-bordered table-hover">
+
+                    <tr>
+                        <th>Id Trabajador</th>
+                        <th>Fecha</th>
+                        <th>Hora de entrada</th>
+                        <th>Hora de salida</th>
+                        <th>Acción</th>
+                    </tr>
+
+                    @if (Model.Lista != null)
+                    {
+                        foreach (var elemento in Model.Lista)
+                        {
+                            <tr>
+                                <td>@elemento.id_Trabajador</td>
+                                <td>@elemento.Fecha.ToString("dd/MM/yyyy")</td>
+                                <td>@elemento.Hora_Entrada.ToString("HH:mm")</td>
+                                <td>@elemento.Hora_Salida.ToString("HH:mm")</td>
+
+                                <td>
+                                    <input type="submit"
+                                           value="Editar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtEditar"
+                                           asp-route-data="@elemento.Id" />
+
+                                    <input type="submit"
+                                           value="Borrar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtPregBorrar"
+                                           asp-route-data="@elemento.Id" />
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        }
+    </div>
+                    
+</form>

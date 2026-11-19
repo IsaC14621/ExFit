@@ -1,0 +1,155 @@
+﻿@page
+@model CargosModel
+@{
+    ViewData["Title"] = "Cargos";
+}
+
+<form method="post">
+
+    <div class="text-center">
+        <h1 class="display-4">Cargos</h1>
+
+        <div>
+            <input type="submit"
+                   value="Consultar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtConsultar" />
+
+            <input type="submit"
+                   value="Nuevo"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtNuevo" />
+
+            <input type="submit"
+                   value="Guardar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtGuardar" />
+
+            <input id="flTrabajador"
+                   type="number"
+                   placeholder="Id Trabajador"
+                   asp-for="Filtro!.Trabajador" />
+        </div>
+
+        @if (ViewData.ContainsKey("Mensaje"))
+        {
+            @await Html.PartialAsync("../Emergentes/Mensajes.cshtml")
+        }
+
+        @if (Model.Formulario || Model.Borrar)
+        {
+            <input type="hidden"
+                   asp-for="Actual!.Id" />
+        }
+
+        @if (Model.Formulario)
+        {
+            <div>
+                <h3>Cargos</h3>
+
+                <label>Id Trabajador</label>
+                <input id="nmTrabajador"
+                       type="number"
+                       asp-for="Actual!.Trabajador" />
+                <br />
+
+                <label>Mozo</label>
+                <input id="nmMozo"
+                       maxlength="20"
+                       asp-for="Actual!.Mozo" />
+                <br />
+
+                <label>Crush</label>
+                <input id="nmCrush"
+                       maxlength="20"
+                       asp-for="Actual!.Crush" />
+                <br />
+
+                <label>Pétalo</label>
+                <input id="nmPetalo"
+                       maxlength="20"
+                       asp-for="Actual!.Petalo" />
+                <br />
+
+                <label>Oficial</label>
+                <input id="nmOficial"
+                       maxlength="20"
+                       asp-for="Actual!.Oficial" />
+                <br />
+            </div>
+        }
+
+        @if (Model.Borrar)
+        {
+            <div class="popup">
+                <div class="pp_del_inner">
+                    <h3>Mensaje</h3>
+
+                    <h4>
+                        ¿Quiere borrar el cargo con la información
+                        Trabajador @Model.Actual!.Trabajador,
+                        Mozo @Model.Actual!.Mozo?
+                    </h4>
+
+                    <input type="submit"
+                           value="Cancelar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtConsultar" />
+
+                    <input type="submit"
+                           value="Borrar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtBorrar" />
+                </div>
+            </div>
+        }
+
+        @if (!Model.Formulario)
+        {
+            <br />
+            <br />
+
+            <div class="containers_vn panel panel-default">
+                <table class="tb_data table table-striped table-bordered table-hover">
+
+                    <tr>
+                        <th>Id Trabajador</th>
+                        <th>Mozo</th>
+                        <th>Crush</th>
+                        <th>Pétalo</th>
+                        <th>Oficial</th>
+                        <th>Acción</th>
+                    </tr>
+
+                    @if (Model.Lista != null)
+                    {
+                        foreach (var elemento in Model.Lista)
+                        {
+                            <tr>
+                                <td>@elemento.Trabajador</td>
+                                <td>@elemento.Mozo</td>
+                                <td>@elemento.Crush</td>
+                                <td>@elemento.Petalo</td>
+                                <td>@elemento.Oficial</td>
+
+                                <td>
+                                    <input type="submit"
+                                           value="Editar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtEditar"
+                                           asp-route-data="@elemento.Id" />
+
+                                    <input type="submit"
+                                           value="Borrar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtPregBorrar"
+                                           asp-route-data="@elemento.Id" />
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        }
+    </div>
+</form>

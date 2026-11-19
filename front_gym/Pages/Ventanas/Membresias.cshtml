@@ -1,0 +1,156 @@
+﻿@page
+@model MembresiasModel
+@{
+    ViewData["Title"] = "Membresias";
+}
+
+<form method="post">
+
+    <div class="text-center">
+        <h1 class="display-4">Membresias</h1>
+
+        <div>
+            <input type="submit"
+                   value="Consultar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtConsultar" />
+
+            <input type="submit"
+                   value="Nuevo"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtNuevo" />
+
+            <input type="submit"
+                   value="Guardar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtGuardar" />
+
+            <input id="flCliente"
+                   type="number"
+                   placeholder="Id Cliente"
+                   asp-for="Filtro!.Cliente" />
+        </div>
+
+        @if (ViewData.ContainsKey("Mensaje"))
+        {
+            @await Html.PartialAsync("../Emergentes/Mensajes.cshtml")
+        }
+
+        @if (Model.Formulario || Model.Borrar)
+        {
+            <input type="hidden"
+                   asp-for="Actual!.Id" />
+        }
+
+        @if (Model.Formulario)
+        {
+            <div>
+                <h3>Membresias</h3>
+
+                <label>Id Cliente</label>
+                <input id="nmCliente"
+                       type="number"
+                       asp-for="Actual!.Cliente" />
+                <br />
+
+                <label>TusaFit</label>
+                <input id="nmTusaFit"
+                       type="checkbox"
+                       asp-for="Actual!.TusaFit" />
+                <br />
+
+                <label>SuperaFit</label>
+                <input id="nmSuperaFit"
+                       type="checkbox"
+                       asp-for="Actual!.SuperaFit" />
+                <br />
+
+                <label>SanandoFit</label>
+                <input id="nmSanandoFit"
+                       type="checkbox"
+                       asp-for="Actual!.SanandoFit" />
+                <br />
+
+                <label>NomasExs</label>
+                <input id="nmNomasExs"
+                       type="checkbox"
+                       asp-for="Actual!.NomasExs" />
+                <br />
+            </div>
+        }
+
+        @if (Model.Borrar)
+        {
+            <div class="popup">
+                <div class="pp_del_inner">
+                    <h3>Mensaje</h3>
+
+                    <h4>
+                        ¿Quiere borrar la membresía del cliente
+                        @Model.Actual!.Cliente?
+                    </h4>
+
+                    <input type="submit"
+                           value="Cancelar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtConsultar" />
+
+                    <input type="submit"
+                           value="Borrar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtBorrar" />
+                </div>
+            </div>
+        }
+
+        @if (!Model.Formulario)
+        {
+            <br />
+            <br />
+
+            <div class="containers_vn panel panel-default">
+                <table class="tb_data table table-striped table-bordered table-hover">
+
+                    <tr>
+                        <th>Id</th>
+                        <th>Id Cliente</th>
+                        <th>TusaFit</th>
+                        <th>SuperaFit</th>
+                        <th>SanandoFit</th>
+                        <th>NomasExs</th>
+                        <th>Acción</th>
+                    </tr>
+
+                    @if (Model.Lista != null)
+                    {
+                        foreach (var elemento in Model.Lista)
+                        {
+                            <tr>
+                                <td>@elemento.Id</td>
+                                <td>@elemento.Cliente</td>
+                                <td>@(elemento.TusaFit ? "Sí" : "No")</td>
+                                <td>@(elemento.SuperaFit ? "Sí" : "No")</td>
+                                <td>@(elemento.SanandoFit ? "Sí" : "No")</td>
+                                <td>@(elemento.NomasExs ? "Sí" : "No")</td>
+
+                                <td>
+                                    <input type="submit"
+                                           value="Editar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtEditar"
+                                           asp-route-data="@elemento.Id" />
+
+                                    <input type="submit"
+                                           value="Borrar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtPregBorrar"
+                                           asp-route-data="@elemento.Id" />
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        }
+    </div>
+</form>

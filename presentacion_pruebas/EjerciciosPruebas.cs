@@ -12,7 +12,7 @@ namespace Pruebas_Unitarias
     public sealed class EjerciciosPruebas
     {
         private IConexion conexion;
-        private Ejercicio? entidad = null;
+        private Ejercicios? entidad = null;
 
         public EjerciciosPruebas()
         {
@@ -34,7 +34,7 @@ namespace Pruebas_Unitarias
 
         public void Insertar()
         {
-            this.entidad = new Ejercicio()
+            this.entidad = new Ejercicios()
             {
                 Nombre_Ejercicio = "sentadilla",
                 Grupo_Muscular = "gluteo",
@@ -58,7 +58,7 @@ namespace Pruebas_Unitarias
         {
             this.entidad!.Equipo_Requerido = "prensa";
 
-            var entry = this.conexion.Entry<Ejercicio>(this.entidad);
+            var entry = this.conexion.Entry<Ejercicios>(this.entidad);
 
             entry.State = EntityState.Modified;
 

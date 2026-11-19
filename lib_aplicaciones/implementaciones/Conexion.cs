@@ -1,5 +1,6 @@
 ﻿
 using lib_aplicaciones.entidades;
+using lib_aplicaciones.implementaciones;
 using Libreria.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,14 +19,14 @@ namespace Libreria.implementaciones
             optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
         }
 
-        public DbSet<Asistencia_Trabajadores>? Asistencia_Trabajadores{ get; set; }
+        public DbSet<AsistenciaTrabajadores>? AsistenciaTrabajadores{ get; set; }
         public DbSet<Cargos>?   Cargos { get; set; }
         public DbSet<Casilleros>?  Casilleros { get; set; }
         public DbSet<Clases>? Clases { get; set; }
         public DbSet<Clientes>? Clientes { get; set; }
         public DbSet<Detalle_Producto>? Detalle_Producto { get; set; }
         public DbSet<Dias_Ingreso>? Dias_Ingresos{ get; set; }
-        public DbSet<Ejercicio>? Ejercicios { get; set; }
+        public DbSet<Ejercicios>? Ejercicios { get; set; }
         public DbSet<Gym>? Gym { get; set; }
         public DbSet<Mantenimiento_Equipos>? Mantenimiento_Equipos { get; set; }
         public DbSet<Membresias>? Membresias { get; set; }
@@ -39,6 +40,10 @@ namespace Libreria.implementaciones
         public DbSet<Trabajadores>? Trabajadores { get; set; }
         public DbSet<Valoraciones_Medicas>? Valoraciones_Medicas { get; set; }
         public DbSet<Dias_Ingreso>? Dias_Ingreso { get; set; }
-        
+        public DbSet<Roles> Roles { get; set; }
+        public DbSet<Usuarios> Usuarios { get; set; }
+        public DbSet<Logins> Logins { get; set; }
+        public DbSet<Auditorias> Auditorias { get; set; }
+
     }
 }

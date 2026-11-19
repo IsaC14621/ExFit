@@ -12,7 +12,7 @@ namespace lib_aplicaciones.entidades
         public string? Tipo_Membresia { get; set; }
         public int Id_Cliente { get; set; }
         public DateTime Hora_ingreso { get; set; }
-        public DateTime Hora_salida { get; set; }
+        public DateTime? Hora_salida { get; set; }
 
         [ForeignKey("Id_Cliente")] public Clientes? _Clientes { get; set; }
 

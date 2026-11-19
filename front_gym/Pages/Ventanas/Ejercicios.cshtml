@@ -1,0 +1,141 @@
+﻿@page
+@model EjerciciosModel
+@{
+    ViewData["Title"] = "Ejercicios";
+}
+
+<form method="post">
+
+    <div class="text-center">
+        <h1 class="display-4">Ejercicios</h1>
+       
+        <div>
+            <input type="submit"
+                   value="Consultar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtConsultar" />
+
+            <input type="submit"
+                   value="Nuevo"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtNuevo" />
+
+            <input type="submit"
+                   value="Guardar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtGuardar" />
+
+            <input id="flNombre_Ejercicio"
+                   placeholder="Nombre del ejercicio"
+                   asp-for="Filtro!.Nombre_Ejercicio" />
+        </div>
+
+        @if (ViewData.ContainsKey("Mensaje"))
+        {
+            @await Html.PartialAsync("../Emergentes/Mensajes.cshtml")
+        }
+
+        @if (Model.Formulario || Model.Borrar)
+        {
+            <input type="hidden"
+                   asp-for="Actual!.Id" />
+        }
+
+        @if (Model.Formulario)
+        {
+            <div>
+                <h3>Ejercicios</h3>
+
+                <label>Nombre del ejercicio</label>
+                <input id="nmNombre_Ejercicio"
+                       asp-for="Actual!.Nombre_Ejercicio" />
+                <br />
+
+                <label>Grupo muscular</label>
+                <input id="nmGrupo_Muscular"
+                       asp-for="Actual!.Grupo_Muscular" />
+                <br />
+
+                <label>Equipo requerido</label>
+                <input id="nmEquipo_Requerido"
+                       asp-for="Actual!.Equipo_Requerido" />
+                <br />
+
+                <label>Nivel de dificultad</label>
+                <input id="nmNivel_Dificualtad"
+                       asp-for="Actual!.Nivel_Dificualtad" />
+                <br />
+            </div>
+        }
+
+        @if (Model.Borrar)
+        {
+            <div class="popup">
+                <div class="pp_del_inner">
+                    <h3>Mensaje</h3>
+
+                    <h4>
+                        ¿Quiere borrar el ejercicio
+                        @Model.Actual!.Nombre_Ejercicio?
+                    </h4>
+
+                    <input type="submit"
+                           value="Cancelar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtConsultar" />
+
+                    <input type="submit"
+                           value="Borrar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtBorrar" />
+                </div>
+            </div>
+        }
+
+        @if (!Model.Formulario)
+        {
+            <br />
+            <br />
+
+            <div class="containers_vn panel panel-default">
+                <table class="tb_data table table-striped table-bordered table-hover">
+
+                    <tr>
+                        <th>Nombre del ejercicio</th>
+                        <th>Grupo muscular</th>
+                        <th>Equipo requerido</th>
+                        <th>Nivel de dificultad</th>
+                        <th>Acción</th>
+                    </tr>
+
+                    @if (Model.Lista != null)
+                    {
+                        foreach (var elemento in Model.Lista)
+                        {
+                            <tr>
+                                <td>@elemento.Nombre_Ejercicio</td>
+                                <td>@elemento.Grupo_Muscular</td>
+                                <td>@elemento.Equipo_Requerido</td>
+                                <td>@elemento.Nivel_Dificualtad</td>
+
+                                <td>
+                                    <input type="submit"
+                                           value="Editar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtEditar"
+                                           asp-route-data="@elemento.Id" />
+
+                                    <input type="submit"
+                                           value="Borrar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtPregBorrar"
+                                           asp-route-data="@elemento.Id" />
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        }
+    </div>
+</form>

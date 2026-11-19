@@ -14,6 +14,6 @@ namespace lib_aplicaciones.entidades
         public int Edad { get; set; }
 
         public ICollection<Cargos>? Cargos { get; set; }
-        public ICollection<Asistencia_Trabajadores>? Asistencia_Trabajadores { get; set; }
+        public ICollection<AsistenciaTrabajadores>? Asistencia_Trabajadores { get; set; }
     }
 }

@@ -13,6 +13,5 @@ namespace lib_aplicaciones.entidades
         public bool Ex_plotamos { get; set; }
         public bool Huyendo { get; set; }
        // [ForeignKey("Clases")] public Clientes? Clases { get; set; }
-       public ICollection<Reservas_Clases>? Reservas_Clases { get; set; }
     }
 }
